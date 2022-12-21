@@ -26,9 +26,6 @@ Route::get('/StdApply',[StdApplyController::class, 'index'])->name('StdApply');
 Route::get('/WApply',[WApplyController::class, 'index'])->name('WApply');
 Route::post('/WApply',[WApplyController::class, 'store']);
 
-Route::get('/register',[RegisterController::class, 'index'])->name('register');
-Route::post('/register',[RegisterController::class, 'store']);
-
 
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store']);
@@ -43,6 +40,9 @@ return view('posts.index');
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('/dashboard',[AdminController::class, 'index'])->name('admin');
+
+    Route::get('/register',[RegisterController::class, 'index'])->name('register');
+    Route::post('/register',[RegisterController::class, 'store']);
 
 });
 ?>

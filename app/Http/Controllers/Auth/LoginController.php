@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -24,10 +25,26 @@ class LoginController extends Controller
     ]);
  
 
-    if(!auth()->attempt ($request->only('email','password'))){
-        return back()->with('status','Invalid login details');
+    if (auth() -> attempt($request -> only('email', 'password'), $request->remember )){
+        //directs user to dashboard
+        //return redirect()->route('dashboard');
+        if(Auth::user()->role== '1') // admin -> 1
+    {
+        return redirect('admin/dashboard')->with('status','Welcome back');
+    }
+    else if(Auth::user()->role== '2'){
+        return redirect('lecturer/dashboard')->with('status','Welcome back');
+    }
+    else if(Auth::user()->role== '3'){
+        return redirect('worker/dashboard')->with('status','Login Successful');
+    }
+    else {
+        return redirect('student/dashboard')->with('status','Login Successful');
+    }
+    }
+    else{
+        return back()-> with('status', 'Invalid login details');
     }
 
- return redirect()->route('dashboard');
     } 
 }

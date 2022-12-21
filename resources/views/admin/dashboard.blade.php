@@ -13,7 +13,7 @@
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Pending Student Applications
-                                        {{-- <h3>{{$users}}</h3> --}}
+                                         <h3>{{$stdpending}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{-- <a class="small text-white stretched-link" href="{{url('admin/viewusers')}}">View Details</a> --}}
@@ -25,7 +25,7 @@
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Students Enrolled
-                                        {{-- <h3>{{$managers}}</h3> --}}
+                                         <h3>{{$stdenrolled}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{-- <a class="small text-white stretched-link" href="{{url('admin/viewhod')}}">View Details</a> --}}
@@ -37,7 +37,7 @@
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Approved Students Applications
-                                        {{-- <h3>{{$onleave}}</h3> --}}
+                                         <h3>{{$stdapproved}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{-- <a class="small text-white stretched-link" href="{{url('admin/usersonleave')}}">View Details</a> --}}
@@ -50,7 +50,7 @@
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Pending Staff Applications
-                                        {{-- <h3>{{$pleaves}}</h3>  --}}  
+                                         <h3>{{$wpending}}</h3>  
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                        {{--  <a class="small text-white stretched-link" href="{{url('admin/viewpleaves')}}">View Details</a> --}}
@@ -62,7 +62,7 @@
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Staff Employed
-                                        {{-- <h3>{{$aleaves}}</h3> --}}
+                                         <h3>{{$wemployed}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{-- <a class="small text-white stretched-link" href="{{url('admin/viewaleaves')}}">View Details</a> --}}
@@ -70,11 +70,13 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         Approved Staff Applications
-                                        {{-- <h3>{{$rleaves}}</h3> --}}
+                                        <h3>{{$wapproved}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{-- <a class="small text-white stretched-link" href="{{url('admin/viewrleaves')}}">View Details</a> --}}
@@ -82,6 +84,23 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-xl-3 col-md-6">
+                              <div class="card bg-secondary text-white mb-4">
+                                    <div class="card-body">
+                                     Employed Lecturers
+                                     <h3>{{$lemployed}}</h3> 
+                                     </div>
+                                     <div class="card-footer d-flex align-items-center justify-content-between">
+                                    {{-- <a class="small text-white stretched-link" href="{{url('admin/viewrleaves')}}">View Details</a> --}}
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                             </div>
+                            </div>
+                        
+                        </div>
+
+                        </div>
                         </div>
                         <div class="departments">
                             <h1>Departments</h1>
