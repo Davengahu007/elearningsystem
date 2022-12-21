@@ -13,6 +13,7 @@ class Wapplications extends Model
         'age',
         'id_no',
         'job',
+        'document',
     ];
     use HasFactory;
 }

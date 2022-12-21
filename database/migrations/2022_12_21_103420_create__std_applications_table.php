@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('grade');
             $table->string('course');
             $table->string('description');
+            $table->string('document');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

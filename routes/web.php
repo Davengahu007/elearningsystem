@@ -9,9 +9,10 @@ use App\Http\Controllers\StdApplyController;
 use App\Http\Controllers\WApplyController;
 
 
-Route::get('/home', function (){
+Route::get('/', function (){
     return view('home');
 })->name('home');
+
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
 

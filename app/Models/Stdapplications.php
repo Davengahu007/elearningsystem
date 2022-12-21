@@ -15,6 +15,7 @@ class Stdapplications extends Model
         'grade',
         'course',
         'description',
+        'document',
     ];
     use HasFactory;
 }

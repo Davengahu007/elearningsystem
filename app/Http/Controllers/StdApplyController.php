@@ -24,7 +24,15 @@ class StdApplyController extends Controller
         'grade'=>'required|max:255',
         'course'=>'required|max:255',
         'description'=>'required|max:255',
+        'document'=>'required',
     ]);
+
+    
+      $file = $request->file('document');
+      $extention = $file->getClientOriginalExtension();
+      $filename = time().'.'.$extention;
+      $file->move('uploads/students',$filename);
+
     StdApplications::create([
         'name'=>$request->name,
         'email'=>$request->email,
@@ -33,9 +41,12 @@ class StdApplyController extends Controller
         'grade'=>$request->grade,
         'course'=>$request->course,
         'description'=>$request->description,
-    ]
-);
+        'document'=>$filename,
+    
+    ]);
+   
 
-return redirect('/home')->with('status','Application made successfully');
+
+return redirect('/')->with('status','Application made successfully');
   }
 }

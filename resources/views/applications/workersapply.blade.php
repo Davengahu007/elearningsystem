@@ -1,77 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container-fluid px-4">
 
-<form action ="{{url('/WApply')}}" method="post">
-    @csrf
-   
+   <div class="card mt-4">
+       <div class="card-header">
+           <h4 class="mt-4">JOB APPLICATION</h4>
+       </div>
+       <div class="card-body">
+         <div class="text-success">
+            @if (session('status'))
+                  {{ session('status') }}
+            @endif
+         </div>
 
-    <div class="form">
-        <label for="name" class="sr-only">Full Name</label>
-        <input type="text" name="name" id="name" placeholder="Enter your Full Name"  value="{{old('name') }}">
+      <form action ="{{url('/WApply')}}" method="post" enctype="multipart/form-data">
+         @csrf
+         
 
-        @error('name')
-        <div class="error"style="color:red;">
-        {{$message}}
-        </div>
-       @enderror
+         <div class="form-group mb-3">
+            <label for="name" class="sr-only">Full Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Full Name"  value="{{old('name') }}">
 
-    </div>
+            @error('name')
+            <div class="fw_light text-danger">
+            {{$message}}
+            </div>
+            @enderror
 
-    <div class="form">
-        <label for="email" class="sr-only">Email</label>
-        <input type="email" name="email" id="email" placeholder="Enter your email"  value="{{old('email') }}">
+         </div>
 
-        @error('email')
-        <div class="error"style="color:red;">
-        {{$message}}
-        </div>
-       @enderror
+         <div class="form-group mb-3">
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"  value="{{old('email') }}">
 
-    </div>
+            @error('email')
+            <div class="fw_light text-danger">
+            {{$message}}
+            </div>
+            @enderror
 
-    <div class="form">
-        <label for="age" class="sr-only">Age</label>
-        <input type="number" name="age" id="age"  placeholder="Enter your age" value="{{old('age') }}" >
+         </div>
 
-        @error('age')
-        <div class="error"style="color:red;">
-           {{$message}}
-        </div>
-       @enderror
+         <div class="form-group mb-3">
+            <label for="age" class="sr-only">Age</label>
+            <input type="number" class="form-control" name="age" id="age"  placeholder="Enter your age" value="{{old('age') }}" >
 
-    </div>
+            @error('age')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+            @enderror
 
-    <div class="form">
-        <label for="id_no" class="sr-only">ID number</label>
-        <input type="number" name="id_no" id="id_no"  placeholder="Enter your national ID number" value="{{old('id_no') }}" >
+         </div>
 
-        @error('id_no')
-        <div class="error"style="color:red;">
-           {{$message}}
-        </div>
-       @enderror
+         <div class="form-group mb-3">
+            <label for="id_no" class="sr-only">ID number</label>
+            <input type="number" class="form-control" name="id_no" id="id_no"  placeholder="Enter your national ID number" value="{{old('id_no') }}" >
 
-    </div>
+            @error('id_no')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+            @enderror
 
-    <div class="form">
-        <label for="job" class="sr-only">Position applying for</label>
-        <input type="text" name="job" id="job"  placeholder="Enter the job position you are applying for" value="{{old('job') }}">
+         </div>
 
-        @error('job')
-        <div class="error"style="color:red;">
-           {{$message}}
-        </div>
-       @enderror
+         <div class="form-group mb-3">
+            <label for="job" class="sr-only">Position applying for</label>
+            <input type="text" class="form-control" name="job" id="job"  placeholder="Enter the job position you are applying for" value="{{old('job') }}">
 
-    </div>
+            @error('job')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+            @enderror
 
-    
-    
-    <div>
-        <button type="submit" class=button> Apply </button>
-    </div>
-    </form>
+         </div>
+
+         <div class="form-group mb-3">
+            <label for="document" >Document</label>
+            <input type="file" class="form-control" name="document" id="document"  placeholder="Select relevant document showing proof of grade" value="{{old('document') }}">
+
+            @error('document')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+         @enderror
+
+      </div>
+
+         
+         
+         <div>
+            <button type="submit" class="btn btn-primary"> Apply </button>
+         </div>
+         </form>
+
+   </div>
+</div>
     
 
 @endsection

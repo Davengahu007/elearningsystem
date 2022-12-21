@@ -20,16 +20,24 @@ class WApplyController extends Controller
         'age'=>'required|max:255',
         'id_no'=>'required|max:255',
         'job'=>'required|max:255',
+        'document'=>'required',
     ]);
+
+      $file = $request->file('document');
+      $extention = $file->getClientOriginalExtension();
+      $filename = time().'.'.$extention;
+      $file->move('uploads/staff',$filename);
+
     WApplications::create([
         'name'=>$request->name,
         'email'=>$request->email,
         'age'=>$request->age,
         'id_no'=>$request->id_no,
         'job'=>$request->job,
+        'document'=>$filename,
     ]
 );
 
-return redirect('/home')->with('status','Application made successfully');
+return redirect('/')->with('status','Application made successfully');
   }
 }
