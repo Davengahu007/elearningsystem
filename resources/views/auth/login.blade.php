@@ -10,9 +10,9 @@
        
     
         <div class="form">
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email"  value="{{old('email') }}">
-           
+            <label for="email" class="sr-only">EMAIL</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email"  value="{{old('email') }}">
+    
             @error('email')
             <div class="error"style="color:red;">
             {{$message}}

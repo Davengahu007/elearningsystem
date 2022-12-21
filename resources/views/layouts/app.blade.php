@@ -14,25 +14,29 @@
         <li>
             <a href="{{route('home')}}">Home</a>
         </li>
+
         <li>
             <a href="{{ route('dashboard')}}">Dashboard</a>
         </li>
     </ul>
+
+    
+
  
      <ul class= "navitems">
        
        @auth 
 
        <li>
-        <a href="">Michelle</a>
+        <a class="nav-link" href="{{url('profile')}}">[ {{ auth()->user()->name }} ]</a>
        </li>
 
-       <li>
-        <form action="{{route ('logout')}}" method="post">
-            @csrf
-        <button type =" submit" >Logout</button>
+       <li class="nav-item">
+        <form action="{{route('logout')}}" method="post">
+          {{ csrf_field() }}  
+          <button type="submit" class="btn nav-link ">Logout</button>
         </form>
-       </li>
+      </li>
        @endauth
 
        @guest 
@@ -43,6 +47,16 @@
        <li>
         <a href="{{route('register')}}">Register</a>
        </li>
+
+       <li>
+        <a href="{{route('StdApply')}}">Apply for entrollment as a student</a>
+      </li>
+
+      <li>
+        <a href="{{route('WApply')}}">Apply for a job</a>
+      </li>
+
+
 
 
        @endguest
