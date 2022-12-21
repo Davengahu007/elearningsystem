@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\StdApplyController;
 use App\Http\Controllers\WApplyController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function (){
@@ -18,6 +19,9 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard'
 
 Route::get('/StdApply',[StdApplyController::class, 'index'])->name('StdApply');
 Route::post('/StdApply',[StdApplyController::class, 'store']);
+
+Route::get('/StdApply',[StdApplyController::class, 'index'])->name('StdApply');
+/* Route::post('/StdApply',[StdApplyController::class, 'store']); */
 
 Route::get('/WApply',[WApplyController::class, 'index'])->name('WApply');
 Route::post('/WApply',[WApplyController::class, 'store']);
@@ -35,4 +39,10 @@ Route::get('/posts', function () {
 return view('posts.index');
 });
 
+
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+
+    Route::get('/dashboard',[AdminController::class, 'index'])->name('admin');
+
+});
 ?>

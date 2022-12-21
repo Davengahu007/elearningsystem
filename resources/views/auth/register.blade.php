@@ -16,17 +16,6 @@
       
         </div> 
 
-        <div class="form">
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" name="username" id="username" placeholder="Username"  value="{{old('username') }}">
-
-            @error('username')
-            <div class="error"style="color:red;">              
-                 {{$message}}
-            </div>
-           @enderror
-
-        </div>
 
         <div class="form">
             <label for="email" class="sr-only">Email</label>
@@ -64,6 +53,18 @@
             @enderror
         </div>
         
+        <div class="form-group mb-3">
+            <label for="role">Role</label>
+            <select name="role" id="role" class="form-control">
+                <option value="" selected disabled> Select Role</option>
+                <option value="0">User</option>
+                <option value="1">Admin</option>
+                <option value="2">Lecturer</option>
+                <option value="3">Worker</option>
+            </select>
+        </div>
+
+
         <div>
             <button type="submit" class=button> Register</button>
 
