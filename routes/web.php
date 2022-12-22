@@ -37,6 +37,7 @@ return view('posts.index');
 });
 
 
+
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('/dashboard',[AdminController::class, 'index'])->name('admin');
@@ -45,10 +46,13 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/managestdpending/{id}',[AdminController::class, 'mstdpending'])->name('mstdpending');
     Route::put('/astdpending/{id}',[AdminController::class, 'astdpending'])->name('astdpending');
 
+    Route::get('/worker_pending',[AdminController::class, 'wpending'])->name('wpending');
+    Route::get('/managewpending/{id}',[AdminController::class, 'mwpending'])->name('mwpending');
+    Route::put('/awpending/{id}',[AdminController::class, 'awpending'])->name('awpending');
+
     Route::get('/register',[RegisterController::class, 'index'])->name('register');
     Route::post('/register',[RegisterController::class, 'store']);
-
-
+    
 
 });
 ?>

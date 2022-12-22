@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 @if (session('message'))
@@ -12,11 +12,11 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Pending Student Applications
+                                        Student Applications
                                          <h3>{{$stdpending}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                         <a class="small text-white stretched-link" href="{{route('stdpending')}}">View The pending student applications</a> 
+                                         <a class="small text-white stretched-link" href="{{route('stdpending')}}">View Details</a> 
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -24,11 +24,11 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Students Enrolled
+                                        The Enrolled Students 
                                          <h3>{{$stdenrolled}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        {{-- <a class="small text-white stretched-link" href="{{url('admin/viewhod')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -36,11 +36,11 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Approved Students Applications
+                                        Approved Students
                                          <h3>{{$stdapproved}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        {{-- <a class="small text-white stretched-link" href="{{url('admin/usersonleave')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                          <h3>{{$wpending}}</h3>  
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                       {{--  <a class="small text-white stretched-link" href="{{url('admin/viewpleaves')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="{{route('wpending')}}">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -61,11 +61,11 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Staff Employed
+                                        The Employed Staff 
                                          <h3>{{$wemployed}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        {{-- <a class="small text-white stretched-link" href="{{url('admin/viewaleaves')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                         <h3>{{$wapproved}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        {{-- <a class="small text-white stretched-link" href="{{url('admin/viewrleaves')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                      <h3>{{$lemployed}}</h3> 
                                      </div>
                                      <div class="card-footer d-flex align-items-center justify-content-between">
-                                    {{-- <a class="small text-white stretched-link" href="{{url('admin/viewrleaves')}}">View Details</a> --}}
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                              </div>
@@ -101,34 +101,6 @@
                         </div>
 
                         </div>
-                        </div>
-                        <div class="departments">
-                            <h1>Departments</h1>
-                            {{-- <div class="owl-carousel owl-theme">
-                                @foreach ($departments as $department)
-                                <div class="department item">
-                                    <h1>{{ $department->departmentname }} staff at work</h1>
-                                    @php
-                                    $count = 0;
-                                    @endphp
-
-                                    @foreach($usersArray as $user)
-                                        @php
-                                        if ($user->department == $department->departmentname) {
-                                            $count = $count + 1;
-                                        }
-                                        @endphp
-                                    @endforeach
-                                    @php
-                                    $totalUsers = $usersArray->count();
-                                    @endphp
-                                    <p>{{$count}} Employees | {{round($count/$totalUsers*100,1)}}% </p>
-                                    <div class="percent" style="width: 10vw;">
-                                        <div class="percent-child" style="width:{{$count/$totalUsers*10 }}vw"></div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div> --}}
                         </div>
                     </div>
 @endsection

@@ -20,6 +20,7 @@ class WApplyController extends Controller
         'age'=>'required|max:255',
         'id_no'=>'required|max:255',
         'job'=>'required|max:255',
+        'description'=>'required|max:255',
         'document'=>'required',
     ]);
 
@@ -34,6 +35,7 @@ class WApplyController extends Controller
         'age'=>$request->age,
         'id_no'=>$request->id_no,
         'job'=>$request->job,
+        'description'=>$request->description,
         'document'=>$filename,
     ]
 );

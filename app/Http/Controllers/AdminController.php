@@ -7,6 +7,7 @@ use App\Models\Stdapplications;
 use App\Models\User;
 use App\Models\Wapplications;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -26,6 +27,65 @@ class AdminController extends Controller
         return view('admin.dashboard',compact('stdpending','stdenrolled','stdapproved','wpending','wemployed','wapproved','lemployed'));
     }
 
+    public function wpending(){
+        $wpending = DB::select("select * from wapplications where status='pending'");
+
+        return view('admin.applications.wpending',compact('wpending'));
+    }
+
+    public function mwpending($id){
+        $mwpending = Wapplications::find($id);
+       
+        return view('admin.applications.mwpending',compact('mwpending'));
+    }
+
+    public function awpending(Request $request, $id){
+        $user = Wapplications::find($id);
+        if(isset($_POST['employ'])){
+
+            DB::table('wapplications')
+                ->where('id', Wapplications::find($id)->id)
+                ->update(['status' => 'employed']);
+
+
+            if($user->job == "lecturer"){
+                User::create([
+                    'name'=>$user->name,
+                    'email'=>$user->email,
+                    'password'=>Hash::make("123"),
+                    'role'=>"2",
+                        
+                ]);
+
+                return redirect('admin/worker_pending')->with('status','Lecturer employed successfully');
+            }
+            else{
+                User::create([
+                    'name'=>$user->name,
+                    'email'=>$user->email,
+                    'password'=>Hash::make("123"),
+                    'role'=>"3",
+                        
+                ]);
+
+                return redirect('admin/worker_pending')->with('status','Finance staff employed successfully');   
+
+            }
+            
+        }
+        else{
+
+            DB::table('wapplications')
+                ->where('id', Wapplications::find($id)->id)
+                ->update(['status' => 'rejected']);
+
+
+            return redirect('admin/worker_pending')->with('status','Applicant rejected');  
+        }
+
+    }
+
+
     public function stdpending(){
         $stdpending = DB::select("SELECT * FROM stdapplications WHERE status = 'pending' ");
 
@@ -38,13 +98,22 @@ class AdminController extends Controller
         return view('admin.applications.mstdpending',compact('mstdpending'));
     }
 
-    public function astdpending($id){
+    public function astdpending(Request $request, $id){
+        $user = Stdapplications::find($id);
         if(isset($_POST['enroll'])){
 
             DB::table('stdapplications')
-                ->where('id', stdapplications::find($id)->id)
+                ->where('id', Stdapplications::find($id)->id)
                 ->update(['status' => 'enrolled']);
 
+
+            User::create([
+                'name'=>$user->name,
+                'email'=>$user->email,
+                'password'=>Hash::make("123"),
+                'role'=>"0",
+                    
+            ]);
 
             return redirect('admin/student_pending')->with('status','Student enrolled successfully');
         }
@@ -55,9 +124,9 @@ class AdminController extends Controller
                 ->update(['status' => 'rejected']);
 
 
-            return redirect('admin/student_pending')->with('status','Student rejected');
-            
+            return redirect('admin/student_pending')->with('status','Student rejected');  
         }
+
     }
     
 

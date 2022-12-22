@@ -1,43 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="register">
-    @if (session('status'))
+@guest
+    <div class="text-danger">
+        @if (session('status'))
             {{ session('status') }}
         @endif
-    <form action ="{{route('login')}}" method="post">
-        @csrf
-       
-    
-        <div class="form">
-            <label for="email" class="sr-only">EMAIL</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email"  value="{{old('email') }}">
-    
-            @error('email')
-            <div class="error"style="color:red;">
-            {{$message}}
-            </div>
-           @enderror
-
+    </div>
+    <div class="login-container">
+        <div class="login-text">
+            <h1>Welcome to the MYSCHOOL</h1>
+            <p>Kindly login to access your account</p>
         </div>
-
-        <div class="form">
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="password"  placeholder="Password" >
-
-            @error('password')
-            <div class="error"style="color:red;">
-               {{$message}}
-            </div>
-           @enderror
-
+        <div class="login-form">
+            <form action="{{route('login')}}" method="post">
+                {{ csrf_field() }} 
+        
+                <div class="form-input-container">
+                    <input class="form-input" placeholder="Email" type="text" class="" id="email" name="email">
+                </div>
+                <div class="form-input-container">
+                    <input class="form-input" placeholder="Password" type="password" class="" id="password" name="password">
+                </div>
+                <div class="">
+                    <input type="checkbox" class="" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                    
+                </div>
+                <div class="login-btns">
+                    <button type="submit" class="btn login-btn">Login</button>
+                    <button type="reset" class="btn login-btn login-btn-red">Cancel</button>
+                </div>
+    
+            </form>
         </div>
-
-        
-        
-        <div>
-            <button type="submit" class=button> Login</button>
-
-        </form>
-</div>
+    </div>
+    @endguest
 @endsection

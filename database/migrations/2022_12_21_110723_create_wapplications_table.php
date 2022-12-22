@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('id_no');
             $table->string('job');
+            $table->string('description');
             $table->string('document');
             $table->string('status')->default('pending');
             $table->timestamps();

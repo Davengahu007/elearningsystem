@@ -68,9 +68,25 @@
 
          <div class="form-group mb-3">
             <label for="job" class="sr-only">Position applying for</label>
-            <input type="text" class="form-control" name="job" id="job"  placeholder="Enter the job position you are applying for" value="{{old('job') }}">
+            <select name="job" id="job" class="form-control">
+               <option value="" selected disabled> Select Role</option>
+               <option value="lecturer">Teaching Staff</option>
+               <option value="finance">Finance Department</option>
+           </select>
 
             @error('job')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+            @enderror
+
+         </div>
+
+         <div class="form-group mb-3">
+            <label for="description" class="sr-only">Description</label>
+            <input type="text" class="form-control" name="description" id="description"  placeholder="Enter the job position you are applying for" value="{{old('description') }}">
+
+            @error('description')
             <div class="fw_light text-danger">
                {{$message}}
             </div>
