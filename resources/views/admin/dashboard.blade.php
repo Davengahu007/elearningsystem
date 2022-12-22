@@ -16,7 +16,7 @@
                                          <h3>{{$stdpending}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        {{-- <a class="small text-white stretched-link" href="{{url('admin/viewusers')}}">View Details</a> --}}
+                                         <a class="small text-white stretched-link" href="{{route('stdpending')}}">View The pending student applications</a> 
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

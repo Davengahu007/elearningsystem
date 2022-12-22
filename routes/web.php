@@ -41,8 +41,14 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('/dashboard',[AdminController::class, 'index'])->name('admin');
 
+    Route::get('/student_pending',[AdminController::class, 'stdpending'])->name('stdpending');
+    Route::get('/managestdpending/{id}',[AdminController::class, 'mstdpending'])->name('mstdpending');
+    Route::put('/astdpending/{id}',[AdminController::class, 'astdpending'])->name('astdpending');
+
     Route::get('/register',[RegisterController::class, 'index'])->name('register');
     Route::post('/register',[RegisterController::class, 'store']);
+
+
 
 });
 ?>
