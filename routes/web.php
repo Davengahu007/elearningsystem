@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\StdApplyController;
 use App\Http\Controllers\WApplyController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AddCoursesController;
 
 
 Route::get('/', function (){
@@ -29,6 +30,7 @@ Route::post('/WApply',[WApplyController::class, 'store']);
 
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store']);
+
 
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
@@ -52,7 +54,10 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('/register',[RegisterController::class, 'index'])->name('register');
     Route::post('/register',[RegisterController::class, 'store']);
-    
+
+    Route::get('/addcourse',[AddCoursesController::class, 'index'])->name('addcourse');
+    Route::post('/addcourse',[AddcoursesController::class, 'store']);
+
 
 });
 ?>
