@@ -9,6 +9,7 @@ use App\Http\Controllers\StdApplyController;
 use App\Http\Controllers\WApplyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AddCoursesController;
+use App\Http\Controllers\AddUnitController;
 
 
 Route::get('/', function (){
@@ -56,8 +57,10 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('/register',[RegisterController::class, 'store']);
 
     Route::get('/addcourse',[AddCoursesController::class, 'index'])->name('addcourse');
-    Route::post('/addcourse',[AddcoursesController::class, 'store']);
+    Route::post('/addcourse',[AddCoursesController::class, 'store']);
 
+    Route::get('/addunit',[AddUnitController::class, 'index'])->name('addunit');
+    Route::post('/addunit',[AddUnitController::class, 'store']);
 
 });
 ?>

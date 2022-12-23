@@ -28,7 +28,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="course_code">Course Code</label>
-                <input type="number" class="form-control @error('course_code') border border-danger @enderror" id="course_code" name="course_code" value="{{old('username')}}">
+                <input type="number" class="form-control @error('course_code') border border-danger @enderror" id="course_code" name="course_code" value="{{old('course_code')}}">
               
                 @error('username')
                     <div class="fw-light text-danger" >
