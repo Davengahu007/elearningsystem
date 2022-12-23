@@ -66,7 +66,7 @@
                     @yield('content')
 
                 </main>
-                @include('layouts.inc3.admin-footer')
+                
     </div>
 </div>
 
