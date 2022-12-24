@@ -57,7 +57,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('/register',[RegisterController::class, 'store']);
 
     Route::get('/addcourse',[AddCoursesController::class, 'index'])->name('addcourse');
-    
     Route::post('/addcourse',[AddcoursesController::class, 'store']);
     Route::get('/viewcourse',[AddCoursesController::class, 'viewcourse']);
     Route::get('/delete_course',[AddCoursesController::class, 'destroy']);
