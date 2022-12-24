@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <!DOCTPE html>
@@ -15,6 +15,11 @@
 </div>
 
 <div class="card-body">
+    <div class="text-success">
+        @if (session('status'))
+        {{ session('status') }}
+    @endif
+</div>
 <table border = "2" class="table table-striped table-bordered ">
 <tr>
 <td>ID</td>

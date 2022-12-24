@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Addcourses extends Model
 {
+    protected $primaryKey = 'course_code';
+    
     protected $fillable = [
         'course_name',
         'course_code',
