@@ -31,7 +31,7 @@
                 <label for="course_code">Course Code</label>
                 <input type="number" class="form-control @error('course_code') border border-danger @enderror" id="course_code" name="course_code" value="{{$courses->course_code}}">
               
-                @error('username')
+                @error('course_code')
                     <div class="fw-light text-danger" >
                         {{$message}}
 

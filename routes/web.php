@@ -10,6 +10,7 @@ use App\Http\Controllers\WApplyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AddCoursesController;
 use App\Http\Controllers\AddUnitController;
+use App\Http\Controllers\MailController;
 
 
 Route::get('/', function (){
@@ -34,6 +35,8 @@ Route::post('/login',[LoginController::class, 'store']);
 
 
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
+
+Route::get('send-mail', [MailController::class, 'index']);
 
 Route::get('/posts', function () {
 return view('posts.index');
@@ -65,6 +68,10 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('/addunit',[AddUnitController::class, 'index'])->name('addunit');
     Route::post('/addunit',[AddUnitController::class, 'store']);
+    Route::get('/viewunit',[AddUnitController::class, 'viewunit']);
+    Route::get('/delete_unit',[AddUnitController::class, 'destroy']);
+    Route::get('/edit_unit/{id}',[AddUnitController::class, 'edit']);
+    Route::put('/update_unit/{id}',[AddUnitController::class, 'update']);
 
 });
 ?>

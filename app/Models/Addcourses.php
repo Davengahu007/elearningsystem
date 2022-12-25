@@ -16,5 +16,6 @@ class Addcourses extends Model
         'duration',
         
     ];
+    
     use HasFactory;
 }
