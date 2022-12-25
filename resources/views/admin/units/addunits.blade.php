@@ -50,8 +50,6 @@
                 @enderror
             </div>
             
-
-            
             <button type="submit" class="btn btn-success">Submit</button>
             <button type="reset" class="btn btn-danger">Cancel</button>
 
