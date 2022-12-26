@@ -73,5 +73,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/edit_unit/{id}',[AddUnitController::class, 'edit']);
     Route::put('/update_unit/{id}',[AddUnitController::class, 'update']);
 
+    Route::get('/viewstudents',[RegisterController::class, 'view_students'])->name('view_students');
+    Route::get('/viewlecturers',[RegisterController::class, 'view_lecturers']);
+    Route::get('/viewworkers',[RegisterController::class, 'view_workers'])->name('view_workers');
+
 });
 ?>
