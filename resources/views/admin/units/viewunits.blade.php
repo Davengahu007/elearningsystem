@@ -21,6 +21,7 @@
     @endif
 </div>
 <table border = "0" class="table table-striped ">
+    
 <tr>
 <td>Unit Name</td>
 <td>Unit Code</td>
@@ -31,6 +32,7 @@
 <td>{{ $unit->unit_name }}</td>
 <td>{{ $unit->unit_code }}</td>
 <td>{{ $unit->course_code }}</td>
+
 
 <td>
     <a href="{{url('admin/edit_unit/'.$unit->unit_code)}}" class="btn btn-success">Edit</a>

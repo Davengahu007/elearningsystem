@@ -53,16 +53,14 @@
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Leaves
+                                 Users
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">All Leaves</a>
-                                    <a class="nav-link" href="#">Pending Leaves </a>
-                                    <a class="nav-link" href="#">Approved Leaves</a>
-                                    <a class="nav-link" href="#">Rejected Leaves</a>
-                                    
+                                    <a class="nav-link" href="{{url('admin/viewstudents/')}}">Enrolled Students</a>
+                                    <a class="nav-link" href="{{url('admin/viewlecturers')}}">Employed Teaching Staff</a>
+                                    <a class="nav-link" href="{{url('admin/viewworkers/')}}">Employed Non-Teaching Staff</a>
                                 </nav>
                             </div>
                                           

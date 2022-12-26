@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use DB;
 
 
 class RegisterController extends Controller
@@ -16,6 +16,25 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+    public function view_students(){
+        $senrolled = DB::select("select * from users where role = '0' ");
+
+        return view('admin.viewstudents', compact("senrolled"));
+    }
+
+    public function view_lecturers(){
+        $lemployed = DB::select("select * from users where role = '2' ");
+
+        return view('admin.viewlecturers', compact("lemployed"));
+    }
+
+    public function view_workers(){
+        $wemployed = DB::select("select * from users where role = '3' ");
+
+        return view('admin.viewworkers', compact("wemployed"));
+    }
+
+
    public function store(Request $request)
     {
      $this->validate($request, 
@@ -24,7 +43,6 @@ class RegisterController extends Controller
         'email'=>'required|max:255',
         'password'=>'required|confirmed',
         'role'=>'required',
-
 
     ]);
     User::create([
