@@ -28,7 +28,7 @@
                                          <h3>{{$stdenrolled}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="{{route('view_students')}}">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Approved Students
+                                        Approved Student Applications
                                          <h3>{{$stdapproved}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -61,11 +61,11 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        The Employed Staff 
+                                         Non-Teaching Staff 
                                          <h3>{{$wemployed}}</h3> 
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="{{route('view_workers')}}">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
