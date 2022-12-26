@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('former_school');
             $table->string('grade');
-            $table->string('course');
+            $table->integer('course');
             $table->string('description');
             $table->string('document');
             $table->string('status')->default('pending');

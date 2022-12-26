@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('unit_code')->primary();
             $table->string('unit_name');
             $table->integer('course_code');
+            $table->foreign('course_code')->references('course_code')->on('addcourses')->onDelete('cascade');
             $table->timestamps();
         });
     }

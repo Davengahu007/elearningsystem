@@ -45,12 +45,12 @@ class AddCoursesController extends Controller
 
     
 
-        return redirect('/admin/addcourse')->with('status','Course added successfully');   
+        return redirect('admin/addcourse')->with('status','Course added successfully');   
     }
 
     public function destroy($course_code){
         DB::delete('delete from addcourses where course_code = ?',[$course_code]);
-        return redirect('/admin/viewcourse')->with('status','Course deleted successfully');
+        return redirect('admin/viewcourse')->with('status','Course deleted successfully');
     }
 
     public function edit($course_code){
@@ -67,6 +67,6 @@ class AddCoursesController extends Controller
         $courses -> duration = $request -> duration;
         $courses->save();
 
-        return redirect('/admin/viewcourse')->with('status','Course details edited successfully');
+        return redirect('admin/viewcourse')->with('status','Course details edited successfully');
     }
 }

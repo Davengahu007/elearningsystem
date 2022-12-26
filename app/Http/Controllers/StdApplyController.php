@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StdApplications;
+use DB;
 
 
 class StdApplyController extends Controller
@@ -11,7 +12,8 @@ class StdApplyController extends Controller
 
     public function index()
     {
-        return view('applications.studentapply');
+      $courses = DB::select('select * from addcourses');
+      return view('applications.studentapply', compact('courses'));
     }
 
 

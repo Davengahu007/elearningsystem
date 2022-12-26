@@ -79,7 +79,13 @@
 
             <div class="form-group mb-3">
                <label for="course" >Course</label>
-               <input type="text" class="form-control" name="course" id="course"  placeholder="Enter the course you would like to apply for" value="{{old('course') }}">
+               <select name="course" id="course" class="form-control">
+                  <option value="" selected disabled> Select Course</option>
+                  @foreach ($courses as $course)
+                  <option value={{$course->course_code}}> {{$course->course_name}} </option>
+                  @endforeach
+              </select>
+               
 
                @error('course')
                <div class="fw_light text-danger">

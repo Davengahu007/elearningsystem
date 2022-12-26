@@ -1,12 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="register">
+
+<div class="container-fluid px-4">
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="mt-4">Add A New Course</h4>
+        </div>
+        <div class="card-body">
+        <div class="text-success">
+                @if (session('status'))
+                {{ session('status') }}
+            @endif
+        </div>
     <form action ="{{route('register')}}" method="post">
         @csrf
-        <div class="form">
-            <label for="name" class="sr-only">Name</label>
-            <input type="text" name="name" id="name" placeholder="Fullname"  value="{{old('name') }}" >
+        <div class="form-group mb-3">
+            <label for="name" >Name</label>
+            <input type="text" class="form-control  @error('name') border border-danger @enderror"  name="name" id="name" placeholder="Fullname"  value="{{old('name') }}" >
 
             @error('name')
             <div class="error"style="color:red;">
@@ -17,9 +29,9 @@
         </div> 
 
 
-        <div class="form">
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email"  value="{{old('email') }}">
+        <div class="form-group mb-3">
+            <label for="email" >Email</label>
+            <input type="email" class="form-control  @error('email') border border-danger @enderror"  name="email" id="email" placeholder="Email"  value="{{old('email') }}">
            
             @error('email')
             <div class="error"style="color:red;">
@@ -29,9 +41,9 @@
 
         </div>
 
-        <div class="form">
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="password" placeholder="Choose a password"  >
+        <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Choose a password"  >
 
             @error('password')
             <div class="error"style="color:red;">
@@ -41,9 +53,9 @@
 
         </div>
 
-        <div class="form">
-            <label for="password_confirmation" class="sr-only">Password Again</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password">
+        <div class="form-group mb-3">
+            <label for="password_confirmation">Password Again</label>
+            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password">
           
             @error('password_confirmation')
             <div class="error"style="color:red;">
@@ -66,8 +78,10 @@
 
 
         <div>
-            <button type="submit" class=button> Register</button>
+            <button type="submit" class="btn btn-success"> Register</button>
 
         </form>
+</div>
+</div>
 </div>
 @endsection

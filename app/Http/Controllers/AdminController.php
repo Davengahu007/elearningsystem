@@ -100,20 +100,22 @@ class AdminController extends Controller
 
     public function astdpending(Request $request, $id){
         $user = Stdapplications::find($id);
+
         if(isset($_POST['enroll'])){
 
             DB::table('stdapplications')
                 ->where('id', Stdapplications::find($id)->id)
                 ->update(['status' => 'enrolled']);
 
-
             User::create([
                 'name'=>$user->name,
                 'email'=>$user->email,
+                'course_code'=>$user->course,
                 'password'=>Hash::make("123"),
                 'role'=>"0",
-                    
+                
             ]);
+            // dd($user->course);
 
             return redirect('admin/student_pending')->with('status','Student enrolled successfully');
         }

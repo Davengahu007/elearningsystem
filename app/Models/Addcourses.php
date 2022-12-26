@@ -18,4 +18,8 @@ class Addcourses extends Model
     ];
     
     use HasFactory;
+
+    public function addunits(){
+        return $this->hasMany(Addunits::class);
+    }
 }
