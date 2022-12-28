@@ -107,7 +107,7 @@
 
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" enctype="multipart/form-data" >
                <label for="document" >Document</label>
                <input type="file" class="form-control" name="document" id="document"  placeholder="Select relevant document showing proof of grade" value="{{old('document') }}">
 

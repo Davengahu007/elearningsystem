@@ -87,7 +87,7 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
     Route::post('/register_unit/{id}',[StudentController::class, 'register']);
 });
 
-    
+
  Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
 
  });
