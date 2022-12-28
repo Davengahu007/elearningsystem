@@ -45,4 +45,8 @@ class User extends Authenticatable
     protected $casts = [
         'id_verified_at' => 'datetime',
     ];
+
+    public function registered_units(){
+        return $this->hasMany(Registered_units::class);
+    }
 }

@@ -18,4 +18,8 @@ class Addunits extends Model
     ];
 
     use HasFactory;
+
+    public function registered_units(){
+        return $this->hasMany(Registered_units::class);
+    }
 }

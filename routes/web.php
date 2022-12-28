@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AddCoursesController;
 use App\Http\Controllers\AddUnitController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\StudentController;
 
 
 Route::get('/', function (){
@@ -43,7 +44,7 @@ return view('posts.index');
 });
 
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
-    Route::post('/register',[RegisterController::class, 'store']);
+Route::post('/register',[RegisterController::class, 'store']);
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
@@ -57,7 +58,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/managewpending/{id}',[AdminController::class, 'mwpending'])->name('mwpending');
     Route::put('/awpending/{id}',[AdminController::class, 'awpending'])->name('awpending');
 
-    
 
     Route::get('/addcourse',[AddCoursesController::class, 'index'])->name('addcourse');
     Route::post('/addcourse',[AddcoursesController::class, 'store']);
@@ -77,5 +77,13 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/viewlecturers',[RegisterController::class, 'view_lecturers']);
     Route::get('/viewworkers',[RegisterController::class, 'view_workers'])->name('view_workers');
 
+});
+
+Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
+    Route::get('/dashboard',[StudentController::class, 'index'])->name('student');
+
+    Route::get('/viewunits',[StudentController::class, 'units'])->name('viewunits');
+    Route::get('/unit_detail/{id}',[StudentController::class,'viewunit']);
+    Route::post('/register_unit/{id}',[StudentController::class, 'register']);
 });
 ?>
