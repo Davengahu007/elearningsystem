@@ -108,12 +108,10 @@
             </div>
 
             <div class="form-group mb-3" enctype="multipart/form-data" >
-               <label for="upload_file" class="control-label col-sm-3">Upload File</label>
-               <div class="col-sm-9">
-                    <input class="form-control" type="file" name="upload_file" id="upload_file">
-                  </div>
+               <label for="document" >Document</label>
+               <input type="file" class="form-control" name="document" id="document"  placeholder="Select relevant document showing proof of grade" value="{{old('document') }}">
 
-               @error('upload-file')
+               @error('document')
                <div class="fw_light text-danger">
                   {{$message}}
                </div>
