@@ -76,9 +76,4 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
 });
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('profile', [UserController::class, 'index']);
-    Route::get('change-password', [UserController::class, 'passwordCreate']);
-    Route::post('change-password', [UserController::class, 'changePassword']);
-});
 ?>
