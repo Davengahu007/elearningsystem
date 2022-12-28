@@ -86,4 +86,9 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
     Route::get('/unit_detail/{id}',[StudentController::class,'viewunit']);
     Route::post('/register_unit/{id}',[StudentController::class, 'register']);
 });
+
+    
+ Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
+
+ });
 ?>
