@@ -12,6 +12,7 @@ use App\Http\Controllers\AddCoursesController;
 use App\Http\Controllers\AddUnitController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LecturerController;
 
 
 Route::get('/', function (){
@@ -89,8 +90,10 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
 
 
  Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
+    Route::get('/dashboard',[LecturerController::class, 'index'])->name('lecturer');
 
- });
+    Route::get('/viewunits',[LecturerController::class, 'units'])->name('viewunits');
+    });
 ?>
 
 

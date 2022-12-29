@@ -6,7 +6,7 @@
 
     <div class="card mt-4">
         <div class="card-header">
-            <h4 class="mt-4">Add A New Course</h4>
+            <h4 class="mt-4">Add A Student</h4>
         </div>
         <div class="card-body">
         <div class="text-success">
