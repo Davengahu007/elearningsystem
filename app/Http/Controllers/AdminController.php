@@ -8,11 +8,28 @@ use App\Models\User;
 use App\Models\Wapplications;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use Mail;
+use App\Mail\WelcomeMail;
 
 
 
 class AdminController extends Controller
 {
+
+    public function send_email()
+    {
+        $mailData = [
+            'title' => 'Mail from MYSCHOOL.com',
+            'body' => 'This is for testing email using smtp.'
+        ];
+
+        
+        Mail::to('emmanuelchivunira@gmail.com')->send(new WelcomeMail($mailData));
+           
+        dd("Email is sent successfully.");
+    }
+
+
     public function index()
     {
         $stdpending = Stdapplications::where('status','pending')->count();
@@ -115,6 +132,21 @@ class AdminController extends Controller
                 'role'=>"0",
                 
             ]);
+
+            $mailData = [
+                'title' => 'CONGRATULATIONS!',
+                'body' => 'Welcome To MYSCHOOL',
+                'password' => 'Your Default password for logging in is 123',
+
+            ];
+
+            $email_array = DB::select('select email from stdapplications where id = "'.$id.'" ');
+
+            $myemail = $user->email;
+
+            Mail::to($myemail)->send(new WelcomeMail($mailData));
+               
+
             // dd($user->course);
 
             return redirect('admin/student_pending')->with('status','Student enrolled successfully');

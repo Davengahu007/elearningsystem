@@ -16,8 +16,8 @@ class MailController extends Controller
     public function index()
     {
         $mailData = [
-            'title' => 'Mail from MYSCHOOL.com',
-            'body' => 'This is for testing email using smtp.'
+            'title' => 'CONGRATULATIONS!',
+            'body' => 'Welcome To MYSCHOOL'
         ];
          
         Mail::to('davengahu007@gmail.com')->send(new WelcomeMail($mailData));

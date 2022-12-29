@@ -37,7 +37,7 @@ Route::post('/login',[LoginController::class, 'store']);
 
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
-Route::get('send-mail', [MailController::class, 'index']);
+Route::get('send-mail', [AdminController::class, 'send_email']);
 
 Route::get('/posts', function () {
 return view('posts.index');
