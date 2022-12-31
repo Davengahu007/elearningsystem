@@ -13,6 +13,9 @@ use App\Http\Controllers\AddUnitController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\User\UserController;
+
+
 
 
 Route::get('/', function (){
@@ -94,6 +97,14 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
 
     Route::get('/viewunits',[LecturerController::class, 'units'])->name('viewunits');
     });
+
+    Route::middleware(['auth'])->group(function(){
+       
+        Route::get('/change-password', [UserController::class, 'passwordCreate'])->name('change-password');
+        Route::post('/change-password', [UserController::class, 'changePassword']);
+    });
+
+
 ?>
 
 

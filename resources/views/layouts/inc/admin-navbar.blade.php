@@ -9,6 +9,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('profile')}}">[ {{ auth()->user()->name }} ]</a>
                 </li>
+                
+                <li class="nav-item">
+                    <form>
+                    <a class="nav-link" href="{{url('change-password')}}">  
+                    <button type="submit" class="btn nav-link ">Change Password</button>
+                    </form>  
+                </li>
+
                 <li class="nav-item">
                     <form action="{{route('logout')}}" method="post">
                     {{ csrf_field() }}
