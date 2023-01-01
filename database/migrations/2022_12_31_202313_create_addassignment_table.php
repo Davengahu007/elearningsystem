@@ -8,16 +8,16 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *ph
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('lecturer', function (Blueprint $table) {
+        Schema::create('addassignment', function (Blueprint $table) {
             $table->id();
-            $table->integer('unit_id');
-            $table->foreign('unit_id')->references('unit_code')->on('addunits')->onDelete('cascade');
-            
+            $table->string('assignment_name');
+            $table->date('due_date');
+            $table->string('instruction');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lecturer');
+        Schema::dropIfExists('addassignment');
     }
 };
