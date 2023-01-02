@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Addunits;
+use DB;
+use App\Models\User;
+use App\Models\Submissions;
 
 class LecturerController extends Controller
 {
     public function index(){
+        $unit = User::find(auth()->user()->id);
+        $assignments = Submissions::where('unit_code',auth()->user()->unit_code)->count();;
 
-        return view('lecturer.dashboard');
+        return view('lecturer.dashboard', compact('unit','assignments'));
     }
 
     public function units(){
