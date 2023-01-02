@@ -18,14 +18,15 @@
     <div class="text-success">
         @if (session('status'))
         {{ session('status') }}
-    @endif
-</div>
+        @endif
+    </div>
 <table border = "2" class="table table-striped table-bordered ">
 <tr>
 <td>ID</td>
 <td>Name</td>
 <td>Email</td>
 <td>Role ID</td>
+<td><a href="{{route('unitregstration')}}" class="btn btn-success">Send Unit Registration Reminder</a></td>
 
 
 </tr>
@@ -37,8 +38,12 @@
 <td>{{ $s_enrolled->role }}</td>
 
 
-{{-- <td><a href="{{url('admin/managestdpending/'.$s_enrolled->id)}}" class="btn btn-success">Manage Application</a></td> --}}
-
+<td>
+    <form action="{{url('admin/assign_fee/'.$s_enrolled->id)}}" method="post">
+        {{ csrf_field() }}
+        <button type="submit" class="btn btn-success">Update Fees</button>
+    </form>
+</td>
 </tr>
 @endforeach
 </table>

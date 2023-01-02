@@ -53,8 +53,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Make Payment</a>
-                                    <a class="nav-link" href="#">Payment History</a>
+                                    <a class="nav-link" href="{{route('make_payment')}}">Make Payment</a>
+                                    <a class="nav-link" href="{{route('add_details')}}">Update Bank Details</a>
+                                    <a class="nav-link" href="{{route('view_payments')}}">Payment History</a>
                                 </nav>
                             </div>
                    

@@ -48,7 +48,7 @@ class StdApplyController extends Controller
     ]);
    
 
-
+  
 return redirect('/')->with('status','Application made successfully');
   }
 }

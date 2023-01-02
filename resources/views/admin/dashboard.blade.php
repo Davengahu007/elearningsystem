@@ -4,6 +4,11 @@
 @if (session('message'))
         <h5 class="alert alert-success mb-2">{{ session('message') }}</h5>
     @endif
+    <div class="text-success">
+        @if (session('status'))
+        {{ session('status') }}
+        @endif
+      </div>
 <div class="container-fluid px-4 dashboard-container">
 
                         <h1 class="mt-4 dashboard-heading">ADMIN </h1>
