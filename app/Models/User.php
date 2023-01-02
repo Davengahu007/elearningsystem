@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role', 
         'course_code',
         'unit_code',
+        'year',
     
     ];
 

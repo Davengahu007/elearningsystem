@@ -72,6 +72,7 @@ class AdminController extends Controller
                     'email'=>$user->email,
                     'password'=>Hash::make("123"),
                     'role'=>"2",
+                    'unit_code'=>$user->unit_code,
                         
                 ]);
 
@@ -151,7 +152,7 @@ class AdminController extends Controller
 
             // dd($user->course);
 
-            return redirect('admin/student_pending')->with('status','Student enrolled successfully');
+            return redirect('admin/dashboard')->with('status','Student enrolled successfully');
         }
         else{
 

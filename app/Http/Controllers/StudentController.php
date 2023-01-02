@@ -10,6 +10,8 @@ use App\Models\Bank_details;
 use App\Models\Payments;
 use App\Models\Fees;
 use App\Models\User;
+use App\Models\Addassignments;
+use App\Models\submissions;
 
 class StudentController extends Controller
 {
@@ -103,5 +105,40 @@ class StudentController extends Controller
         return view('student.payments.paymenthistory', compact('payments'));
     }
 
+    public function viewassignment(){
+        $assignment = DB::select("select * from addassignments");
+        return view('student.assignments.viewassignments' , compact('assignment'));
+    }
 
+    // public function give($id){
+    //     $assignment = Addassignment::find($id);
+    //     return view('student.assignments.submit', compact('assignment'));
+    // }
+    public function give(){
+        $units = DB::select('select * from addunits');
+        return view('student.assignments.submit',compact('units'));
+    }
+
+    public function submission(Request $request){
+        $user_id = auth()->user()->id;
+
+    $this->validate($request, 
+    [
+        'unit'=>'required|max:255',
+        'document'=>'required',
+    ]);
+
+    $file = $request->file('document');
+    $extention = $file->getClientOriginalExtension();
+    $filename = time().'.'.$extention;
+    $file->move('uploads/staff',$filename);
+
+    Submissions::create([
+        'unit_code'=> $request->unit,
+        'student_id'=> $user_id,
+        'submission'=> $filename,
+    ]); 
+
+    return redirect()->route('student')->with('status','Assignment submitted successfully');
+    }
 }

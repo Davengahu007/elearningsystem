@@ -99,6 +99,10 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
 
     Route::get('/add_details',[StudentController::class, 'add_details'])->name('add_details');
     Route::post('/add_details',[StudentController::class, 'bank_details']);
+
+    Route::get('/viewassignment',[StudentController::class, 'viewassignment'])->name('viewassignments');
+    Route::get('/assignment',[StudentController::class, 'give'])->name('give');
+    Route::post('/assignment',[StudentController::class, 'submission']);
 });
 
 Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
@@ -114,10 +118,18 @@ Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
 
  Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
     Route::get('/dashboard',[LecturerController::class, 'index'])->name('lecturer');
+
     Route::get('/addassignment',[AddAssignmentController::class, 'index'])->name('addassignment');
     Route::post('/addassignment',[AddAssignmentController::class, 'store']);
-    Route::get('/viewassignment',[AddAssignmentController::class, 'viewassignment']);
+
+    Route::get('/viewassignment',[AddAssignmentController::class, 'viewassignment'])->name('viewassignment');
+
+    Route::get('/viewsubmissions',[AddAssignmentController::class, 'viewsubmission'])->name('viewsubmissions');
+
+    // Route::get('/download/{$id}', [AddAssignmentController::class, 'download'])->name('download');
     });
+
+
 
     Route::middleware(['auth'])->group(function(){
        

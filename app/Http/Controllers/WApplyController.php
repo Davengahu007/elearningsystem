@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WApplications;
+use DB;
 
 class WApplyController extends Controller
 {
     public function index()
     {
-        return view('applications.workersapply');
+      $units = DB::select('select * from addunits');
+      return view('applications.workersapply',compact('units'));
     }
 
 
@@ -20,6 +22,7 @@ class WApplyController extends Controller
         'age'=>'required|max:255',
         'id_no'=>'required|max:255',
         'job'=>'required|max:255',
+        'unit'=>'required',
         'description'=>'required|max:255',
         'document'=>'required',
     ]);
@@ -35,6 +38,7 @@ class WApplyController extends Controller
         'age'=>$request->age,
         'id_no'=>$request->id_no,
         'job'=>$request->job,
+        'unit_code'=>$request->unit,
         'description'=>$request->description,
         'document'=>$filename,
     ]

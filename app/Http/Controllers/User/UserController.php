@@ -31,16 +31,16 @@ class UserController extends Controller
     public function passwordCreate(){
         if(Auth::user()->role == '1') // admin -> 1
         {
-            return view('change-password');
+            return view('admin.change-password');
         }
         else if(Auth::user()->role == '2'){
-            return view('change-password');
+            return view('lecturer.change-password');
         }
         else if(Auth::user()->role == '0'){
-            return view('change-password');
+            return view('student.change-password');
         }
         else if(Auth::user()->role== '3'){
-            return view('change-password');
+            return view('finance.change-password');
         }
 
         //return view('change-password');
@@ -70,7 +70,7 @@ class UserController extends Controller
                 return redirect('/student/dashboard')->with('message','Password Updated Successfully');
             }
             else if(Auth::user()->role == '3'){
-                return redirect('/staff/dashboard')->with('message','Password Updated Successfully');
+                return redirect('/finance/dashboard')->with('message','Password Updated Successfully');
             }
 
 

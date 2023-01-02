@@ -83,6 +83,24 @@
          </div>
 
          <div class="form-group mb-3">
+            <label for="unit" >Unit You'll Teach</label>
+            <select name="unit" id="" class="form-control">
+               <option value="" selected disabled> Select Course</option>
+               <option value="0" selected disabled> Not Teaching</option>
+               @foreach ($units as $unit)
+               <option value={{$unit->unit_code}}> {{$unit->unit_name}} </option>
+               @endforeach
+           </select>
+            
+            @error('unit')
+            <div class="fw_light text-danger">
+               {{$message}}
+            </div>
+            @enderror
+
+         </div>
+
+         <div class="form-group mb-3">
             <label for="description" class="sr-only">Description</label>
             <input type="text" class="form-control" name="description" id="description"  placeholder="Enter the job position you are applying for" value="{{old('description') }}">
 

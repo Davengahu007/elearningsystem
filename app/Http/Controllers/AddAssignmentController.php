@@ -3,59 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Addassignment;
+use App\Models\Addassignments;
 use DB;
 
 
 class AddAssignmentController extends Controller
 {
     public function viewassignment(){
-        $assignment = DB::select("select * from addassignment");
+        $assignment = DB::select("select * from addassignments");
 
-        return view('lecturer.viewassignment' , compact('assignment'));
+        return view('lecturer.assignments.viewassignment' , compact('assignment'));
+    }
+
+    public function viewsubmission(){
+        $assignment = DB::select('select * from submissions where unit_code = "'.auth()->user()->unit_code.'"');
+
+        return view('lecturer.assignments.viewsubmissions' , compact('assignment'));
     }
 
     public function index()
     {
-        return view('lecturer.addassignment');
+        $units = DB::select('select * from addunits');
+        return view('lecturer.assignments.addassignment',compact('units'));
     }
 
     public function store(Request $request)
     {
-        
         $this -> validate($request, [
-            'assignment_name'=> 'required|max:255',
-            'due_date'=> 'required|max:255',
-            'instruction'=> 'required|max:255',
-
+            'assignment_name'=>'required|max:255',
+            'due_date'=>'required|max:255',
+            'instruction'=>'required|max:255',
+            'year'=>'required|max:255',
+            'unit'=>'required|max:255',
         ]);
 
-        Addassignment::create(
+        Addassignments::create(
             [
-                'assignment_name' => $request -> assignment_name,
-                'due_date' => $request -> due_date,
-                'instruction' => $request -> instruction,
+                'assignment_name'=>$request->assignment_name,
+                'due_date'=>$request->due_date,
+                'instruction'=>$request->instruction,
+                'year'=>$request->year,
+                'unit_code'=>$request->unit,
             ]
         );
 
-
-        return redirect('/lecturer/addassignment')->with('status','Assignment added successfully');
+        return redirect('lecturer/dashboard')->with('status','Assignment added successfully');
      
     }
        
         public function edit($assignment_name){
-            $assignment = Addassignment::find($assignment_name);
-            return view('lecturer.edit');
+            $assignment = Addassignments::find($assignment_name);
+            return view('lecturer.assignments.edit');
         }
 
         public function update(Request $request, $assignment_name){
             
-            $assignment = Addassignment::find($assignment_name);
+            $assignment = Addassignments::find($assignment_name);
             $assignment -> assignment_name = $request -> assignment_name;
             $assignment -> due_date = $request -> due_date;
             $assignment -> instruction = $request -> instruction;
             $assignment->save();
     
-            return redirect('/lecturer/viewassignment')->with('status','Assignment details edited successfully');
+            return redirect('/lecturer/dashboard')->with('status','Assignment details edited successfully');
         }
+
 }
