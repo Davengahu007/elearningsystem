@@ -46,6 +46,7 @@ Route::get('send-mail', [AdminController::class, 'send_email']);
 
 Route::get('send-mails', [AdminController::class, 'registrationmail'])->name('unitregstration');
 
+
 Route::get('/posts', function () {
 return view('posts.index');
 });
