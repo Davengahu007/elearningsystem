@@ -16,7 +16,6 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\AddAssignmentController;
 use App\Http\Controllers\BlogPostController;
-
 use App\Http\Controllers\FinanceController;
 
 
@@ -85,10 +84,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/viewlecturers',[RegisterController::class, 'view_lecturers']);
     Route::get('/viewworkers',[RegisterController::class, 'view_workers'])->name('view_workers');
 
-<<<<<<< HEAD
-=======
     Route::post('/assign_fee/{id}',[AdminController::class, 'fee'])->name('assign_fee');
->>>>>>> 21b85c67304e5875bb6a30a16c627296f9089b3c
 
 });
 
