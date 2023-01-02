@@ -13,6 +13,11 @@ use App\Http\Controllers\AddUnitController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\AddAssignmentController;
+
+
+
 
 
 Route::get('/', function (){
@@ -91,9 +96,18 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
 
  Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
     Route::get('/dashboard',[LecturerController::class, 'index'])->name('lecturer');
-
-    Route::get('/viewunits',[LecturerController::class, 'units'])->name('viewunits');
+    Route::get('/addassignment',[AddAssignmentController::class, 'index'])->name('addassignment');
+    Route::post('/addassignment',[AddAssignmentController::class, 'store']);
+    Route::get('/viewassignment',[AddAssignmentController::class, 'viewassignment']);
     });
+
+    Route::middleware(['auth'])->group(function(){
+       
+        Route::get('/change-password', [UserController::class, 'passwordCreate'])->name('change-password');
+        Route::post('/change-password', [UserController::class, 'changePassword']);
+    });
+
+
 ?>
 
 

@@ -1,5 +1,6 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,16 +31,16 @@ class UserController extends Controller
     public function passwordCreate(){
         if(Auth::user()->role == '1') // admin -> 1
         {
-            return view('admin.change-password');
+            return view('change-password');
         }
         else if(Auth::user()->role == '2'){
-            return view('lecturer.change-password');
+            return view('change-password');
         }
         else if(Auth::user()->role == '0'){
-            return view('student.change-password');
+            return view('change-password');
         }
         else if(Auth::user()->role== '3'){
-            return view('staff.change-password');
+            return view('change-password');
         }
 
         //return view('change-password');
