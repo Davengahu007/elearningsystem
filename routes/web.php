@@ -16,6 +16,7 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\AddAssignmentController;
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\FinanceController;
 
 
@@ -87,9 +88,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::post('/assign_fee/{id}',[AdminController::class, 'fee'])->name('assign_fee');
 
-});
+    });
 
-Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
+    Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
     Route::get('/dashboard',[StudentController::class, 'index'])->name('student');
 
     Route::get('/viewunits',[StudentController::class, 'units'])->name('viewunits');
@@ -103,9 +104,10 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
 
     Route::get('/add_details',[StudentController::class, 'add_details'])->name('add_details');
     Route::post('/add_details',[StudentController::class, 'bank_details']);
-});
+    
+    });
 
-Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
+    Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
     Route::get('/dashboard',[FinanceController::class, 'index'])->name('finance');
 
     Route::get('/payments_made',[FinanceController::class, 'payments'])->name('payments_made');
@@ -113,7 +115,7 @@ Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
     Route::get('/cleared_students',[FinanceController::class, 'cleared'])->name('cleared');
     Route::get('/urgent',[FinanceController::class, 'urgent'])->name('urgent');
     
-});
+     });
 
 
  Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
@@ -132,22 +134,35 @@ Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
    
     });
 
-    Route::prefix('blog')->middleware(['auth'])->group(function(){
+ Route::prefix('blog')->middleware(['auth'])->group(function(){
     Route::get('/', [BlogPostController::class, 'index'])->name('blog');
-   
     Route::get('/create/post', [BlogPostController::class, 'create'])->name('create');
     Route::post('/create/post', [BlogPostController::class, 'store']); 
   
-
     Route::get('/edit/{id}', [BlogPostController::class, 'edit']) ;
     Route::put('/update/{id}', [BlogPostController::class, 'update']); 
 
     Route::get('/{id}', [BlogPostController::class, 'show'])->name('show'); 
-
     Route::get('/delete/{id}', [BlogPostController::class, 'destroy']);
-//deletes post from the database
 
-});
+    Route::get('/', [BlogPostController::class, 'index'])->name('blog');
+
+ });
+
+ Route::prefix('lecturer')->middleware(['auth'])->group(function(){
+    Route::get('/', [PostsController::class, 'index'])->name('lecturer');
+
+    Route::get('/create/post', [PostsController::class, 'create'])->name('create');
+    Route::post('/create/post', [PostsController::class, 'store']); 
+  
+    Route::get('/edit/{id}', [PostsController::class, 'edit']) ;
+    Route::put('/update/{id}', [PostsController::class, 'update']); 
+
+    Route::get('/{id}', [PostsController::class, 'show'])->name('show'); 
+    Route::get('/delete/{id}', [PostsController::class, 'destroy']);
+
+
+   });
 
 
 ?>
