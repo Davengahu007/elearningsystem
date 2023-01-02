@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stdapplications;
 use App\Models\User;
+use App\Models\Fees;
 use App\Models\Wapplications;
 use DB;
 use Illuminate\Support\Facades\Hash;
@@ -100,6 +101,7 @@ class AdminController extends Controller
 
     public function astdpending(Request $request, $id){
         $user = Stdapplications::find($id);
+        
 
         if(isset($_POST['enroll'])){
 
@@ -115,7 +117,6 @@ class AdminController extends Controller
                 'role'=>"0",
                 
             ]);
-            // dd($user->course);
 
             return redirect('admin/student_pending')->with('status','Student enrolled successfully');
         }
@@ -131,5 +132,20 @@ class AdminController extends Controller
 
     }
     
+    public function fee($id){
+        $countstd = Fees::where('id',$id)->count();
+        $sfees = -200000;
+
+        if($countstd == 0){
+           Fees::create([
+                'id'=>$id,
+                'fee_balance'=>$sfees,
+            ]); 
+          return redirect('admin/dashboard')->with('status','Fees Posted successfully');   
+        }
+        else{
+            return redirect('admin/viewstudents')->with('status','Student has already been assigned fees');
+        }
+    }
 
 }

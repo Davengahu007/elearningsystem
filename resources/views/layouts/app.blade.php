@@ -31,7 +31,7 @@
       <li class="nav-item">
         <form action="{{route('logout')}}" method="post">
           {{ csrf_field() }}
-          <button type="submit" class="btn nav-link ">Logout</button>
+          <button type="submit" class="btn nav-link " name="pfees" id="pfees">Logout</button>
         </form>
       </li>
 
@@ -62,7 +62,6 @@
     @include('layouts.inc3.admin-sidebar')
     <div id="layoutSidenav_content">
                 <main>
-
                     @yield('content')
 
                 </main>

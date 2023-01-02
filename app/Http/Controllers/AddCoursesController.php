@@ -43,7 +43,6 @@ class AddCoursesController extends Controller
             ]
         );
 
-    
 
         return redirect('admin/addcourse')->with('status','Course added successfully');   
     }
