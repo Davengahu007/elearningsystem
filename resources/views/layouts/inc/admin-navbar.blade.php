@@ -20,7 +20,6 @@
                     
                     <a class="nav-link" href="{{route('blog')}}">Blog </a> 
                 </li>
-
                 <li class="nav-item">
                     <form action="{{route('logout')}}" method="post">
                     {{ csrf_field() }}

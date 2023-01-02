@@ -30,22 +30,7 @@ class BlogPostController extends Controller
         
 }
 
-public function passwordCreate(){
-    if(Auth::user()->role == '1') // admin -> 1
-    {
-        return view('change-password');
-    }
-    else if(Auth::user()->role == '2'){
-        return view('change-password');
-    }
-    else if(Auth::user()->role == '0'){
-        return view('change-password');
-    }
-    else if(Auth::user()->role== '3'){
-        return view('change-password');
-    }
 
-}
 public function show( $id)
 {
 
@@ -70,7 +55,7 @@ public function show( $id)
 
 public function create()
     {
-        return view('blog.create');
+        return view('admin.blog.create');
     }
 
 
@@ -90,7 +75,7 @@ public function create()
 
     public function edit($id){
         $posts = BlogPost::find($id);
-        return view('blog.edit', compact('posts'));
+        return view('admin.blog.edit', compact('posts'));
 
     }
 
