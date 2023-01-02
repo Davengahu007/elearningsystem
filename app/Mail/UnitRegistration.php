@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
   
-class WelcomeMail extends Mailable
+class UnitRegistration extends Mailable
 {
     use Queueable, SerializesModels;
   
@@ -30,7 +30,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('CONGRATULATIONS ON YOUR ENROLLMENT!')
-                    ->view('emails.WelcomeMail');
+        return $this->subject('Unit Registration Reminder')
+                    ->view('emails.UnitRegistrationMail');
     }
 }

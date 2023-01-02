@@ -37,5 +37,8 @@ class AdminMiddleware
 
             return redirect('/login')->with('status','Please login first');
         }
+
+
+        
     }
 }

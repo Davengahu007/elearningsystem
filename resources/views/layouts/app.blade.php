@@ -30,9 +30,12 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{route('change-password')}}"> Change Password </a> 
+        <a class="nav-link" href="{{route('change-password')}}">Change Password </a> 
     </li>
 
+    <li class="nav-item">       
+      <a class="nav-link" href="{{route('lecturer')}}">Announcement </a> 
+  </li>
       <li class="nav-item">
         <form action="{{route('logout')}}" method="post">
           {{ csrf_field() }}
