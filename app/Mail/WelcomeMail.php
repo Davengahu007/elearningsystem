@@ -30,7 +30,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to MYSCHOOL')
+        return $this->subject('CONGRATULATIONS ON YOUR ENROLLMENT!')
                     ->view('emails.WelcomeMail');
     }
 }
