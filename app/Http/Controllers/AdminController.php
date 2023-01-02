@@ -11,6 +11,8 @@ use DB;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Mail\WelcomeMail;
+use App\Mail\UnitRegistration;
+
 
 
 
@@ -115,6 +117,26 @@ class AdminController extends Controller
        
         return view('admin.applications.mstdpending',compact('mstdpending'));
     }
+
+    public function registrationmail(){
+        
+        $mailData = [
+            'title' => 'Unit Registration Reminder',
+            'body' => 'Have you registered for your units?',
+            
+        ];
+
+        $emails = DB::select('select email from users where role = "0" ');
+
+        Mail::to($emails)->send(new UnitRegistration($mailData));
+           
+
+        // dd($user->course);
+
+        return redirect('admin/viewstudents')->with('status','Emails sent successfully');
+    }
+
+
 
     public function astdpending(Request $request, $id){
         $user = Stdapplications::find($id);

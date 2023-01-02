@@ -26,6 +26,7 @@
 <td>Name</td>
 <td>Email</td>
 <td>Role ID</td>
+<td><a href="{{route('unitregstration')}}" class="btn btn-success">Send Unit Registration Reminder</a></td>
 
 
 </tr>
