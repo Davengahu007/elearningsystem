@@ -13,6 +13,11 @@
                 </li>
 
                 <li class="nav-item">
+                    
+                    <a class="nav-link" href="{{route('blog')}}">blog </a> 
+                </li>
+
+                <li class="nav-item">
                     <form action="{{route('logout')}}" method="post">
                     {{ csrf_field() }}
                     <button type="submit" class="btn nav-link ">Logout</button>

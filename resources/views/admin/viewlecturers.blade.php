@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<!DOCTPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>View of all Employed Lecturers</title>
