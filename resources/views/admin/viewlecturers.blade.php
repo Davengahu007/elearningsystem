@@ -39,6 +39,7 @@
 
 {{-- <td><a href="{{url('admin/managestdpending/'.$s_enrolled->id)}}" class="btn btn-success">Manage Application</a></td> --}}
 
+
 </tr>
 @endforeach
 </table>

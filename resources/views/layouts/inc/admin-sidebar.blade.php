@@ -28,8 +28,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('admin/addunit/')}}">New Unit</a>
-                                    <a class="nav-link" href="{{url('admin/viewunit/')}}">Units List</a>
+                                    <a class="nav-link" href="{{url('admin/viewunit/')}}">View Units</a>
+                                    <a class="nav-link" href="{{url('admin/addunit/')}}">Add Unit</a>
                                 </nav>
                             </div>
 

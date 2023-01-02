@@ -12,6 +12,9 @@ use App\Http\Controllers\AddCoursesController;
 use App\Http\Controllers\AddUnitController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\AddAssignmentController;
 use App\Http\Controllers\FinanceController;
 
 
@@ -38,7 +41,7 @@ Route::post('/login',[LoginController::class, 'store']);
 
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
-Route::get('send-mail', [MailController::class, 'index']);
+Route::get('send-mail', [AdminController::class, 'send_email']);
 
 Route::get('/posts', function () {
 return view('posts.index');
@@ -107,4 +110,22 @@ Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
     Route::get('/urgent',[FinanceController::class, 'urgent'])->name('urgent');
     
 });
+
+
+ Route::prefix('lecturer')->middleware(['auth','isLecturer'])->group(function(){
+    Route::get('/dashboard',[LecturerController::class, 'index'])->name('lecturer');
+    Route::get('/addassignment',[AddAssignmentController::class, 'index'])->name('addassignment');
+    Route::post('/addassignment',[AddAssignmentController::class, 'store']);
+    Route::get('/viewassignment',[AddAssignmentController::class, 'viewassignment']);
+    });
+
+    Route::middleware(['auth'])->group(function(){
+       
+        Route::get('/change-password', [UserController::class, 'passwordCreate'])->name('change-password');
+        Route::post('/change-password', [UserController::class, 'changePassword']);
+    });
+
+
 ?>
+
+
