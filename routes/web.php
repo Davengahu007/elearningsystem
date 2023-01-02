@@ -15,8 +15,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\AddAssignmentController;
-
-
+use App\Http\Controllers\BlogPostController;
 
 
 
@@ -83,6 +82,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/viewlecturers',[RegisterController::class, 'view_lecturers']);
     Route::get('/viewworkers',[RegisterController::class, 'view_workers'])->name('view_workers');
 
+
 });
 
 Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
@@ -105,9 +105,31 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
        
         Route::get('/change-password', [UserController::class, 'passwordCreate'])->name('change-password');
         Route::post('/change-password', [UserController::class, 'changePassword']);
+   
+
+   
     });
+
+    Route::prefix('blog')->middleware(['auth'])->group(function(){
+    Route::get('/', [BlogPostController::class, 'index'])->name('blog');
+   
+    Route::get('/create/post', [BlogPostController::class, 'create'])->name('create');
+    Route::post('/create/post', [BlogPostController::class, 'store']); 
+  
+
+    Route::get('/edit/{id}', [BlogPostController::class, 'edit']) ;
+    Route::put('/update/{id}', [BlogPostController::class, 'update']); 
+
+    Route::get('/{id}', [BlogPostController::class, 'show'])->name('show'); 
+
+    Route::get('/delete/{id}', [BlogPostController::class, 'destroy']);
+//deletes post from the database
+
+});
 
 
 ?>
+
+
 
 
