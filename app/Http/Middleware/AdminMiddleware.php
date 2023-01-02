@@ -27,10 +27,10 @@ class AdminMiddleware
                 return redirect('lecturers/dashboard')->with('status','Access denied. You are not an administrator');
             }
             else if(Auth::user()->role=='3'){
-                return redirect('workers/dashboard')->with('status','Access denied. You are not an administrator');
+                return redirect('finance/dashboard')->with('status','Access denied. You are not an administrator');
             }
             else{
-                return redirect('students/dashboard')->with('status','Access denied. You are not an administrator');  
+                return redirect('student/dashboard')->with('status','Access denied. You are not an administrator');  
             }
         }
         else{

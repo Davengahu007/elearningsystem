@@ -36,7 +36,7 @@ class LoginController extends Controller
         return redirect('lecturer/dashboard')->with('status','Welcome back');
     }
     else if(Auth::user()->role== '3'){
-        return redirect('worker/dashboard')->with('status','Login Successful');
+        return redirect('finance/dashboard')->with('status','Login Successful');
     }
     else {
         return redirect('student/dashboard')->with('status','Login Successful');

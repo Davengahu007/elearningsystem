@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master3')
 
 @section('content')
     <div class="text-danger">
@@ -12,7 +12,7 @@
 
     <div class="container-fluid px-4 dashboard-container">
         
-                        <h1 class="mt-4">Student Dashboard</h1>
+                        <h1 class="mt-4">Finance Dashboard</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
@@ -20,8 +20,8 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Course
-                                        <h3>{{auth()->user()->course_code}}</h3>
+                                        Students With Clearance
+                                        <h3>{{$cleared}}</h3>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -32,8 +32,8 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Due Assignments
-                                        <h3></h3>
+                                        Pending Clearance
+                                        <h3>{{$pending}}</h3>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -44,20 +44,8 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
-                                        Units Taken
-                                        <h3></h3>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-secondary text-white mb-4">
-                                    <div class="card-body">
-                                        Fee Balance
-                                        <h3>{{$fee_balancee}}</h3>
+                                        Urgent Attention Students
+                                        <h3>{{$urgent}}</h3>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>

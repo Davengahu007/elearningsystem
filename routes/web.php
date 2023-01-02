@@ -15,9 +15,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\AddAssignmentController;
-
-
-
+use App\Http\Controllers\FinanceController;
 
 
 Route::get('/', function (){
@@ -83,6 +81,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/viewlecturers',[RegisterController::class, 'view_lecturers']);
     Route::get('/viewworkers',[RegisterController::class, 'view_workers'])->name('view_workers');
 
+    Route::post('/assign_fee/{id}',[AdminController::class, 'fee'])->name('assign_fee');
+
 });
 
 Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
@@ -91,6 +91,24 @@ Route::prefix('student')->middleware(['auth','isStudent'])->group(function(){
     Route::get('/viewunits',[StudentController::class, 'units'])->name('viewunits');
     Route::get('/unit_detail/{id}',[StudentController::class,'viewunit']);
     Route::post('/register_unit/{id}',[StudentController::class, 'register']);
+
+    Route::get('/payment',[StudentController::class, 'make_payment'])->name('make_payment');
+    
+    Route::post('/make_payment',[StudentController::class, 'pay'])->name('lipa');
+    Route::get('/viewpayments',[StudentController::class, 'viewpayments'])->name('view_payments');
+
+    Route::get('/add_details',[StudentController::class, 'add_details'])->name('add_details');
+    Route::post('/add_details',[StudentController::class, 'bank_details']);
+});
+
+Route::prefix('finance')->middleware(['auth','inFinance'])->group(function(){
+    Route::get('/dashboard',[FinanceController::class, 'index'])->name('finance');
+
+    Route::get('/payments_made',[FinanceController::class, 'payments'])->name('payments_made');
+    Route::get('/pending_clearance',[FinanceController::class, 'fee_balance'])->name('pending_clearance');
+    Route::get('/cleared_students',[FinanceController::class, 'cleared'])->name('cleared');
+    Route::get('/urgent',[FinanceController::class, 'urgent'])->name('urgent');
+    
 });
 
 

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StudentMiddleware
+class FinanceMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,19 +18,19 @@ class StudentMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->role=='0'){
+            if(Auth::user()->role=='3'){
                 // 1 -> admin
                 // 0 -> user
                 return $next($request);
             }
             else if(Auth::user()->role=='2'){
-                return redirect('lecturers/dashboard')->with('status','Access denied. You are not a student');
+                return redirect('lecturers/dashboard')->with('status','Access denied. You are not in the finance department');
             }
-            else if(Auth::user()->role=='3'){
-                return redirect('finance/dashboard')->with('status','Access denied. You are not a student');
+            else if(Auth::user()->role=='0'){
+                return redirect('student/dashboard')->with('status','Access denied. You are not in the finance department');
             }
             else{
-                return redirect('admin/dashboard')->with('status','Access denied. You are not a student');  
+                return redirect('admin/dashboard')->with('status','Access denied. You are not in the finance department');  
             }
         }
         else{
