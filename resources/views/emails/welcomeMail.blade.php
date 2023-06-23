@@ -7,7 +7,7 @@
     <h1>{{ $mailData['title'] }}</h1>
     <p>{{ $mailData['body'] }}</p>
   
-    <p>You have been successfully enrolled to MYSCHOOL. <br>
+    <p>You have been successfully Registered to Zenzone. <br>
 
        Kindly use your email to log into the system. <br> {{$mailData['password']}} <br>
        <br>
@@ -16,8 +16,7 @@
     
      <br>
      <br>
-       Kind Regards, <br>
-       Dean of Students, <br>
-       MYSCHOOL.</p>
+    
+       
 </body>
 </html>

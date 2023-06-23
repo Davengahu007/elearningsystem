@@ -85,8 +85,8 @@
          <div class="form-group mb-3">
             <label for="unit" >Unit You'll Teach</label>
             <select name="unit" id="" class="form-control">
-               <option value="" selected disabled> Select Course</option>
-               <option value="0" selected disabled> Not Teaching</option>
+               <option value="" selected disabled> Select Unit</option>
+               <option value="0"> Not Teaching</option>
                @foreach ($units as $unit)
                <option value={{$unit->unit_code}}> {{$unit->unit_name}} </option>
                @endforeach
